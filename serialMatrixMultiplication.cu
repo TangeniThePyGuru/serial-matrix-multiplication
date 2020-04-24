@@ -20,16 +20,16 @@ inline cudaError_t checkCuda(cudaError_t result)
 //   }
 // }
 
-void multMatricesInto(int N, float *result, float *a, float *b)
-{
-  for (unsigned int i = 0; i < N; i++) {
-		for (unsigned int j = 0; j < N; j++) {
-			result[i][j] = 0.0;
-			for (unsigned int k = 0; k < N; k++)
-				result[i][j] = result[i][j] + a[i][k] * b[k][j];
-		} /* end j loop */
-	}
-}
+// void multMatricesInto(int N, float *result, float *a, float *b)
+// {
+//   for (unsigned int i = 0; i < N; i++) {
+// 		for (unsigned int j = 0; j < N; j++) {
+// 			result[i][j] = 0.0;
+// 			for (unsigned int k = 0; k < N; k++)
+// 				result[i][j] = result[i][j] + a[i][k] * b[k][j];
+// 		} /* end j loop */
+// 	}
+// }
 
 void checkElementsAre(float target, float *array, int N)
 {
@@ -118,7 +118,15 @@ int main(int argc, char **argv)
   printf("Performing Mutrix Multiplication..."); fflush(stdout);
   startTime(&timer);
 
-  multMatricesInto(numCRows,(float *) c,(float *) a,(float *) b);
+  // multMatricesInto(numCRows,(float *) c,(float *) a,(float *) b);
+
+  for (unsigned int i = 0; i < N; i++) {
+		for (unsigned int j = 0; j < N; j++) {
+			result[i][j] = 0.0;
+			for (unsigned int k = 0; k < N; k++)
+				result[i][j] = result[i][j] + a[i][k] * b[k][j];
+		} /* end j loop */
+	}
 
 
   // printf("Verifying Mutrix Multiplication..."); fflush(stdout);
