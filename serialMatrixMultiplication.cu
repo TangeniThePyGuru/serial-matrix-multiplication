@@ -56,7 +56,7 @@ int main(int argc, char **argv)
   int numCRows;    // number of rows in the matrix C (you have to set this)
   int numCColumns; // number of columns in the matrix C (you have to set
                    // this)
-//   size_t A_sz, B_sz, C_sz;
+  size_t A_sz, B_sz, C_sz;
   
   Timer timer;
 
