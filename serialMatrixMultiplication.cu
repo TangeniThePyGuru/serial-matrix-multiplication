@@ -20,7 +20,7 @@ inline cudaError_t checkCuda(cudaError_t result)
 //   }
 // }
 
-void multMatricesInto(float result[][], float a[][], float b[][], int N)
+void multMatricesInto(float *result, float *a, float *b, int N)
 {
   for (unsigned int i = 0; i < N; i++) {
 		for (unsigned int j = 0; j < N; j++) {
@@ -118,7 +118,7 @@ int main(int argc, char **argv)
   printf("Performing Mutrix Multiplication..."); fflush(stdout);
   startTime(&timer);
 
-  multMatricesInto(c, a, b, numCRows);
+  multMatricesInto(&c, &a, &b, numCRows);
 
 
   // printf("Verifying Mutrix Multiplication..."); fflush(stdout);
