@@ -135,8 +135,8 @@ int main(int argc, char **argv)
   // verify
 //   checkElementsAre(7, c, C_sz);
 
-//   free(a);
-//   free(b);
-//   free(c);
+  free(a);
+  free(b);
+  free(c);
 }
     
