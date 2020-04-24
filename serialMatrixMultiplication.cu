@@ -87,9 +87,9 @@ int main(int argc, char **argv)
   numCRows = numARows;
   numCColumns = numBColumns;
 
-  __global__ float a[numARows][numAColumns];
-  __global__ float b[numARows][numBColumns];
-  __global__ float c[numCRows][numCColumns];
+  float *a[numARows][numAColumns];
+  float *b[numARows][numBColumns];
+  float *c[numCRows][numCColumns];
 
   // matrix sizes
 //   A_sz = numARows * numAColumns;
