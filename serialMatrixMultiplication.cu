@@ -128,6 +128,7 @@ int main(int argc, char **argv)
 		} /* end j loop */
 	}
 
+  stopTime(&timer); printf("%f s\n", elapsedTime(timer));
 
   // printf("Verifying Mutrix Multiplication..."); fflush(stdout);
   // startTime(&timer);
