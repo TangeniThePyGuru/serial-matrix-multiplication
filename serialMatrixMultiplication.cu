@@ -2,13 +2,13 @@
 #include <assert.h>
 #include "support.h"
 
-inline cudaError_t checkCuda(cudaError_t result)
+inline cudaError_t checkCuda(cudaError_t c)
 {
-  if (result != cudaSuccess) {
-    fprintf(stderr, "CUDA Runtime Error: %s\n", cudaGetErrorString(result));
-    assert(result == cudaSuccess);
+  if (c != cudaSuccess) {
+    fprintf(stderr, "CUDA Runtime Error: %s\n", cudaGetErrorString(c));
+    assert(c == cudaSuccess);
   }
-  return result;
+  return c;
 }
 
 
@@ -20,13 +20,13 @@ inline cudaError_t checkCuda(cudaError_t result)
 //   }
 // }
 
-// void multMatricesInto(int N, float *result, float *a, float *b)
+// void multMatricesInto(int N, float *c, float *a, float *b)
 // {
 //   for (unsigned int i = 0; i < N; i++) {
 // 		for (unsigned int j = 0; j < N; j++) {
-// 			result[i][j] = 0.0;
+// 			c[i][j] = 0.0;
 // 			for (unsigned int k = 0; k < N; k++)
-// 				result[i][j] = result[i][j] + a[i][k] * b[k][j];
+// 				c[i][j] = c[i][j] + a[i][k] * b[k][j];
 // 		} /* end j loop */
 // 	}
 // }
@@ -120,11 +120,11 @@ int main(int argc, char **argv)
 
   // multMatricesInto(numCRows,(float *) c,(float *) a,(float *) b);
 
-  for (unsigned int i = 0; i < N; i++) {
-		for (unsigned int j = 0; j < N; j++) {
-			result[i][j] = 0.0;
-			for (unsigned int k = 0; k < N; k++)
-				result[i][j] = result[i][j] + a[i][k] * b[k][j];
+  for (unsigned int i = 0; i < numCRows; i++) {
+		for (unsigned int j = 0; j < numCRows; j++) {
+			c[i][j] = 0.0;
+			for (unsigned int k = 0; k < numCRows; k++)
+				c[i][j] = c[i][j] + a[i][k] * b[k][j];
 		} /* end j loop */
 	}
 
