@@ -22,12 +22,11 @@ inline cudaError_t checkCuda(cudaError_t result)
 
 void multMatricesInto(float result[][], float a[][], float b[][], int N)
 {
-
   for (unsigned int i = 0; i < N; i++) {
 		for (unsigned int j = 0; j < N; j++) {
 			result[i][j] = 0.0;
 			for (unsigned int k = 0; k < N; k++)
-				result[i][j] = c[i][j] + a[i][k] * b[k][j];
+				result[i][j] = result[i][j] + a[i][k] * b[k][j];
 		} /* end j loop */
 	}
 }
@@ -100,8 +99,8 @@ int main(int argc, char **argv)
   //@@ Allocate CPU memory and assign data
 
 //   a = (float*) malloc( sizeof(float)*A_sz );
-  for (unsigned int i=0; j < numARows; j++) { 
-    for (unsigned int j=0; i < numAColumns; i++)  {
+  for (unsigned int j=0; j < numARows; j++) { 
+    for (unsigned int i=0; i < numAColumns; i++)  {
         a[j][i] = (rand()%100)/100.00; 
     }
   }
@@ -122,8 +121,8 @@ int main(int argc, char **argv)
   multMatricesInto(c, a, b, numCRows);
 
 
-  printf("Verifying Mutrix Multiplication..."); fflush(stdout);
-  startTime(&timer);
+  // printf("Verifying Mutrix Multiplication..."); fflush(stdout);
+  // startTime(&timer);
   // verify
 //   checkElementsAre(7, c, C_sz);
 
