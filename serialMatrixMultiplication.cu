@@ -92,13 +92,13 @@ int main(int argc, char **argv)
   float c[numCRows][numCColumns];
 
   // matrix sizes
-//   A_sz = numARows * numAColumns;
-//   B_sz = numBRows * numBColumns;
-//   C_sz = numCRows * numCColumns;
+  A_sz = numARows * numAColumns;
+  B_sz = numBRows * numBColumns;
+  C_sz = numCRows * numCColumns;
 
   //@@ Allocate CPU memory and assign data
 
-//   a = (float*) malloc( sizeof(float)*A_sz );
+  a = (float*) malloc( sizeof(float)*A_sz );
   for (unsigned int j=0; j < numARows; j++) { 
     for (unsigned int i=0; i < numAColumns; i++)  {
         a[j][i] = (rand()%100)/100.00; 
@@ -106,14 +106,14 @@ int main(int argc, char **argv)
   }
 
 
-//   b = (float*) malloc( sizeof(float)*B_sz );
+  b = (float*) malloc( sizeof(float)*B_sz );
   for (unsigned int j=0; j < numBRows; j++) {
     for (unsigned int i=0; i < numBColumns; i++) { 
         b[j][i] = (rand()%100)/100.00; 
     }
   }
 
-//   c = (float*) malloc( sizeof(float)*C_sz );
+  c = (float*) malloc( sizeof(float)*C_sz );
 
   printf("Performing Mutrix Multiplication..."); fflush(stdout);
   startTime(&timer);
