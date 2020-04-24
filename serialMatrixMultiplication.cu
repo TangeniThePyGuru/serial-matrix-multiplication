@@ -20,13 +20,13 @@ inline cudaError_t checkCuda(cudaError_t result)
 //   }
 // }
 
-void multMatricesInto(float *result, float *a, float *b, int N)
+void multMatricesInto(float result[][], float a[][], float b[][], int N)
 {
 
-  for (i = 0; i < N; i++) {
-		for (j = 0; j < N; j++) {
+  for (unsigned int i = 0; i < N; i++) {
+		for (unsigned int j = 0; j < N; j++) {
 			result[i][j] = 0.0;
-			for (k = 0; k < N; k++)
+			for (unsigned int k = 0; k < N; k++)
 				result[i][j] = c[i][j] + a[i][k] * b[k][j];
 		} /* end j loop */
 	}
